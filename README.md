@@ -1,16 +1,59 @@
-# audirvana-scrobbler
+# audirvana-scrobbler (with album artist)
 
-Scrobbles **Audirvana** playing tracks to **Last.fm**. Uses *zsh*, *AppleScript* and *Python 3* ([scrobbler](https://github.com/hauzer/scrobbler/)).
+Scrobbles Audirvana playing tracks to last.fm.
+This fork of `audirvana-scrobbler` takes album artist into account for local tracks.
+The album artist is included with the scrobble if it's different from the track artist.
 
-Loops every 3 seconds (the ````DEFAULT_SLEEP_TIME```` variable). The loop time increases to 20 seconds (the ````LONG_SLEEP_TIME```` variable) if Audirvana has been idle for 5 minutes (the ````AUDIRVANA_IDLE_THRESHOLD```` variable).
+Uses zsh, AppleScript, and Python 3. This fork also uses
+forked sibling repositories for [scrobbler](https://github.com/pootriarch/scrobbler/)
+and [lfm](https://github.com/pootriarch/lfm/tree/1.1.2-album-artist)
+that you'll need to install locally.
 
-Scrobbles to Last.fm when 75 % (the ````THRESHOLD```` variable) of the track has been played.
+## Dependencies
 
-1. Install [scrobbler](https://github.com/hauzer/scrobbler/) (requires Python 3) with ````pip install scrobblerh````
-2. Authenticate scrobbler to Last.fm with the ````add-user```` command.
-3. Download this script.
-4. Change the ````LAST_FM_USER```` variable in the script to your Last.fm username.
-5. Run the script with ````./audirvana-scrobbler.sh````
-6. Play some music with Audirvana.
+### Environment
+* Audirvana
+* macOS
+* python3
+* zsh
 
-![Screenshot](https://github.com/sprtm/audirvana-scrobbler/blob/master/screenshot.png)
+### Unmodified packages
+* media-info
+
+### Local packages
+These packages aren't yet published; you'll need to clone and install locally.
+
+* [scrobbler](https://github.com/pootriarch/scrobbler), fork of [original by hauzer](https://github.com/hauzer/scrobbler)
+* [lfm v 1.1.2](https://github.com/pootriarch/lfm/tree/1.1.2-album-artist) (last.fm API integration), fork of [original by hauzer](https://github.com/hauzer/lfm). Requires v1.1.2, which is the only current version with album artist support.
+
+## Installing
+
+1. Clone [lfm v1.1.2](https://github.com/pootriarch/lfm/tree/1.1.2-album-artist), [scrobbler](https://github.com/pootriarch/scrobbler/),
+and [audirvana-scrobbler](https://github.com/pootriarch/audirvana-scrobbler/) (this package)
+from GitHub to your local filesystem.
+1. Replace the API key in `lfm.py` with your own.
+2. Inform `audirvana-scrobbler.sh` of your last.fm username either by changing the `LASTFM_USER` variable
+in the script or by defining `LASTFM_USER` in your shell environment.
+1. Install `lfm` with `pip3 install /path/to/lfm`
+1. Install `scrobbler` with `pip3 install /path/to/scrobbler`
+4. Install `media-info` using a package manager such as `brew` on macOS or `apt-get` on Unix.
+2. Authenticate `scrobbler` to last.fm with `scrobbler add-user`.
+
+## Usage
+
+Place `audirvana-scrobbler.sh` at a location of your choosing; it need not be on your PATH.
+
+Run it and leave its Terminal window open.
+
+Play some music with Audirvana.
+
+### Default timings
+
+Checks currently playing track every 10 seconds (`DEFAULT_SLEEP_TIME`).
+The loop time increases to 20 seconds (`LONG_SLEEP_TIME`) if Audirvana has been idle for 5 minutes (`AUDIRVANA_IDLE_THRESHOLD`).
+
+Scrobbles to Last.fm when 60% (`THRESHOLD`) of the track has been played.
+
+Some of these values have been adjusted from the upstream project.
+
+![Screenshot](screenshot.png)
