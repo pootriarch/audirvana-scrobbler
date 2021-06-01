@@ -68,7 +68,7 @@ export SLEEP_TIME="$DEFAULT_SLEEP_TIME"
 export TIMESTAMP=""
 export TRACK_DURATION=""
 export TRACK_HAS_BEEN_SCROBBLED=false
-export VERSION="1.0.1-aa-0.2"
+export VERSION="1.1.0"
 
 # functions
 function IS_AUDIRVANA_RUNNING {
