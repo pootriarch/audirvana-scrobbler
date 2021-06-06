@@ -1,4 +1,13 @@
-# audirvana-scrobbler (with album artist)
+# Scrobbler EOL
+
+---
+
+With Audirvana moving to a subscription model, I will no longer maintain this project. It is unlikely to work with any version released in 2021 or later.
+
+---
+
+
+### audirvana-scrobbler (with album artist)
 
 Scrobbles Audirvana playing tracks to last.fm.
 This fork of `audirvana-scrobbler` takes album artist into account for local tracks.
@@ -9,24 +18,24 @@ forked sibling repositories for [scrobbler](https://github.com/pootriarch/scrobb
 and [lfm](https://github.com/pootriarch/lfm/tree/1.1.2-album-artist)
 that you'll need to install locally.
 
-## Dependencies
+### Dependencies
 
-### Environment
+#### Environment
 * Audirvana
 * macOS
 * python3
 * zsh
 
-### Unmodified packages
+#### Unmodified packages
 * media-info
 
-### Local packages
+#### Local packages
 These packages aren't yet published; you'll need to clone and install locally.
 
 * [scrobbler](https://github.com/pootriarch/scrobbler), fork of [original by hauzer](https://github.com/hauzer/scrobbler)
 * [lfm v 1.1.2](https://github.com/pootriarch/lfm/tree/1.1.2-album-artist) (last.fm API integration), fork of [original by hauzer](https://github.com/hauzer/lfm). Requires v1.1.2, which is the only current version with album artist support.
 
-## Installing
+### Installing
 
 1. Clone [lfm v1.1.2](https://github.com/pootriarch/lfm/tree/1.1.2-album-artist), [scrobbler](https://github.com/pootriarch/scrobbler/),
 and [audirvana-scrobbler](https://github.com/pootriarch/audirvana-scrobbler/) (this package)
@@ -39,7 +48,7 @@ in the script or by defining `LASTFM_USER` in your shell environment.
 4. Install `media-info` using a package manager such as `brew` on macOS or `apt-get` on Unix.
 2. Authenticate `scrobbler` to last.fm with `scrobbler add-user`.
 
-## Usage
+### Usage
 
 Place `audirvana-scrobbler.sh` at a location of your choosing; it need not be on your PATH.
 
@@ -47,7 +56,7 @@ Run it and leave its Terminal window open.
 
 Play some music with Audirvana.
 
-### Default timings
+#### Default timings
 
 Checks currently playing track every 10 seconds (`DEFAULT_SLEEP_TIME`).
 The loop time increases to 20 seconds (`LONG_SLEEP_TIME`) if Audirvana has been idle for 5 minutes (`AUDIRVANA_IDLE_THRESHOLD`).
